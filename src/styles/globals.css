@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .translate-x-7p {
+        transform: translateX(7%);
+    }
+}
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+}
+html {
+    margin: 0;
+    padding: 0;
+    max-width: 1711px;
+    margin: 0 auto;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    cursor: none !important;
+    overflow-x: hidden;
+}
+.container {
+    max-width: 1360px;
+    margin: 0 auto;
+}
+html,
+body {
+    cursor: none;
+}
+.cursor-style {
+    cursor: none !important;
+}
+.scale-animation {
+    @apply hover:scale-125 transition-all duration-700;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+.hidden {
+    display: none;
+}
+.square {
+    animation: expandWidth 1s linear forwards;
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 400px;
+    }
+}
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-130%);
+    }
+}
+
+.preloader-text {
+    animation: slideInFromBottom 0.7s ease forwards;
+}
+@media (max-width: 768px) {
+    html,
+    body {
+        cursor: auto !important;
+    }
+    .cursor-style {
+        cursor: pointer !important;
+    }
+}
+
+@media (max-width: 450px) {
+    .square {
+        animation: expandWidth 1s linear forwards;
+    }
+
+    @keyframes expandWidth {
+        from {
+            width: 0;
+        }
+        to {
+            width: 300px;
+        }
+    }
+}
+@media (max-width: 350px) {
+    .square {
+        animation: expandWidth 1s linear forwards;
+    }
+
+    @keyframes expandWidth {
+        from {
+            width: 0;
+        }
+        to {
+            width: 250px;
+        }
+    }
+}
+.mouse {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    z-index: 999999;
+    pointer-events: none;
+    transition: transform 0.1s ease-out, opacity 0.3s ease-in-out;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background: #d7d7d7;
+    z-index: 2;
+}
+
+.mouse::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 2px solid #cdcdcd;
+    background: transparent;
+}
+
+.mouse__view {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    background-color: transparent;
+    border-radius: 100%;
+    opacity: 0.7;
+}
+
+.view-visible .mouse__view {
+    opacity: 1;
+}
+
+.links-visible::after {
+    border: 2px solid #cdcdcd;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: transparent;
+}
+
+.links-visible::before {
+    opacity: 0;
+}
+
+.hidden-cursor {
+    opacity: 0 !important;
+}
+
+.portfolio-item.even {
+    flex-direction: row-reverse;
+}
+.img-work.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+@keyframes fadeIn {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+@media (max-width: 768px) {
+    .mouse {
+        left: -10000px;
+        top: -10000px;
+    }
+    .portfolio-item.even {
+        flex-direction: none;
+    }
+}
+.tools-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .tools-img {
+        max-width: 100% !important;
+    }
+}
+
+gallery-container {
+    position: relative;
+    height: 400px; /* Фиксированная высота */
+    display: flex;
+    align-items: center; /* Вертикальное выравнивание контента */
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+    transition: color 0.3s;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    color: #ccc;
+}
+.hidden-cursor {
+    cursor: progress !important;
+}
