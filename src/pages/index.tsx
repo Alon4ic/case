@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Poppins } from 'next/font/google';
 
 // import Preloader from '@/components/Preloader';
@@ -18,25 +18,25 @@ const poppins = Poppins({
 });
 
 export default function App() {
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            document.body.style.cursor = 'none'; // Принудительно скрываем курсор
-        }
-        const handleLoad = () => {
-            setTimeout(() => {
-                setLoading(false);
-            }, 2000); // Задержка 2 секунды
-        };
+    // useEffect(() => {
+    //     if (typeof window !== 'undefined') {
+    //         document.body.style.cursor = 'none'; // Принудительно скрываем курсор
+    //     }
+    //     const handleLoad = () => {
+    //         setTimeout(() => {
+    //             setLoading(false);
+    //         }, 2000); // Задержка 2 секунды
+    //     };
 
-        if (document.readyState === 'complete') {
-            handleLoad();
-        } else {
-            window.addEventListener('load', handleLoad);
-            return () => window.removeEventListener('load', handleLoad);
-        }
-    }, []);
+    //     if (document.readyState === 'complete') {
+    //         handleLoad();
+    //     } else {
+    //         window.addEventListener('load', handleLoad);
+    //         return () => window.removeEventListener('load', handleLoad);
+    //     }
+    // }, []);
 
     return (
         <div className={`${poppins.className} text-white`}>
