@@ -6,13 +6,11 @@ import Header from './Header';
 
 const slides = [
     {
-        title: "Hi! I'm Olena Redko",
-        highlight: '’',
-        subtitle: "I'm front-end developer from Ukraine.",
+        title: `Hi! I<span class="text-reds">'</span>m Olena Redko`,
+        subtitle: "I'm full-stack developer.",
     },
     {
-        title: "Let's work together!",
-        highlight: '’',
+        title: `Let<span class="text-reds">'</span>s work together!`,
         subtitle: 'Build a unique, innovative and amazing project.',
     },
 ];
@@ -35,7 +33,7 @@ const HomePage: React.FC = () => {
         return () => {
             clearInterval(interval);
         };
-    }, []); // Убрали handleScroll, оставили только интервал
+    }, []);
 
     useEffect(() => {
         let currentPartIndex = 0;
@@ -79,13 +77,12 @@ const HomePage: React.FC = () => {
             <Header />
             <div className="home-left middle:w-[66%] w-[100%] middle:h-[800px] h-[550px] bg-[url('/images/background.jpg')] bg-repeat">
                 <div className="flex flex-col middle:pt-[219px] pt-[180px] middle:ml-[14%] ml-0 middle:px-0 px-5 xl:w-[500px] lg:w-[400px] middle:w-[350px] w-full middle:text-start text-center">
-                    <h1 className="home-title text-white tracking-tighter font-semibold uppercase mb-[26px] xl:text-[70px] lg:text-[56px] sm:text-[48px] text-[36px] xl:leading-[90px] lg:leading-[68px] sm:leading-[57px] leading-[44px]">
-                        {slides[currentSlide].title.split('’')[0]}
-                        <span className="text-reds">
-                            {slides[currentSlide].highlight}
-                        </span>
-                        {slides[currentSlide].title.split('’')[1]}
-                    </h1>
+                    <h1
+                        className="home-title text-white tracking-tighter font-semibold uppercase mb-[26px] xl:text-[70px] lg:text-[56px] sm:text-[48px] text-[36px] xl:leading-[90px] lg:leading-[68px] sm:leading-[57px] leading-[44px]"
+                        dangerouslySetInnerHTML={{
+                            __html: slides[currentSlide].title,
+                        }}
+                    />
                     <p className="text-white font-medium uppercase xl:text-xl lg:text-lg sm:text-base text-sm middle:mb-[61px] mb-[40px] middle:text-start text-center home-text">
                         {slides[currentSlide].subtitle}
                     </p>
