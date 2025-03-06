@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Poppins } from 'next/font/google';
 
-import Preloader from '@/components/Preloader';
+// import Preloader from '@/components/Preloader';
 import MousePointer from '@/components/MousePointer';
-// import NavFix from '@/components/NavFix';
+import NavFix from '@/components/NavFix';
 import HomePage from '@/components/Home';
 import Works from '@/components/Works';
 import Skills from '@/components/Skills';
@@ -40,12 +40,12 @@ export default function App() {
 
     return (
         <div className={`${poppins.className} text-white`}>
-            {loading ? (
+            {/* {loading ? (
                 <Preloader />
-            ) : (
+            ) : ( */}
                 <>
                     <MousePointer />
-                    {/* <NavFix /> */}
+                    <NavFix />
                     <HomePage />
                     <Works />
                     <Reviews />
@@ -54,7 +54,7 @@ export default function App() {
                     <ToastContainer />
                     <Footer />
                 </>
-            )}
+            {/* )} */}
         </div>
     );
 }
