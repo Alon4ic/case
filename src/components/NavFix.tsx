@@ -1,4 +1,3 @@
-'use client';
 import React, { useState, useEffect } from 'react';
 
 const sections = [
@@ -15,13 +14,41 @@ const NavFix = () => {
     const [menuStyle, setMenuStyle] = useState({});
 
     const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            const top = element.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({
-                top,
-                behavior: 'smooth',
-            });
+        try {
+            const element = document.getElementById(id);
+            if (!element) return;
+
+            // Проверяем поддержку smooth scroll
+            const isSmoothScrollSupported =
+                'scrollBehavior' in document.documentElement.style;
+
+            if (isSmoothScrollSupported) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // Полифилл для iOS
+                const start = window.pageYOffset;
+                const target = element.getBoundingClientRect().top + start;
+                const duration = 500;
+                const startTime = performance.now();
+
+                const animateScroll = (time: number) => {
+                    const elapsed = time - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    window.scrollTo(0, start + target * progress);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animateScroll);
+                    }
+                };
+
+                requestAnimationFrame(animateScroll);
+            }
+        } catch (error) {
+            console.error('Scroll error:', error);
+            // Fallback для старых браузеров
+            const element = document.getElementById(id);
+            element?.scrollIntoView();
         }
     };
 
@@ -68,9 +95,9 @@ const NavFix = () => {
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll);
-        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll, { passive: true });
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleScroll);
