@@ -1,7 +1,7 @@
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Poppins } from 'next/font/google';
 
-// import Preloader from '@/components/Preloader';
+import Preloader from '@/components/Preloader';
 import MousePointer from '@/components/MousePointer';
 import NavFix from '@/components/NavFix';
 import HomePage from '@/components/Home';
@@ -18,31 +18,31 @@ const poppins = Poppins({
 });
 
 export default function App() {
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
-    // useEffect(() => {
-    //     if (typeof window !== 'undefined') {
-    //         document.body.style.cursor = 'none'; // Принудительно скрываем курсор
-    //     }
-    //     const handleLoad = () => {
-    //         setTimeout(() => {
-    //             setLoading(false);
-    //         }, 2000); // Задержка 2 секунды
-    //     };
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            document.body.style.cursor = 'none'; // Принудительно скрываем курсор
+        }
+        const handleLoad = () => {
+            setTimeout(() => {
+                setLoading(false);
+            }, 2000); // Задержка 2 секунды
+        };
 
-    //     if (document.readyState === 'complete') {
-    //         handleLoad();
-    //     } else {
-    //         window.addEventListener('load', handleLoad);
-    //         return () => window.removeEventListener('load', handleLoad);
-    //     }
-    // }, []);
+        if (document.readyState === 'complete') {
+            handleLoad();
+        } else {
+            window.addEventListener('load', handleLoad);
+            return () => window.removeEventListener('load', handleLoad);
+        }
+    }, []);
 
     return (
         <div className={`${poppins.className} text-white`}>
-            {/* {loading ? (
+            {loading ? (
                 <Preloader />
-            ) : ( */}
+            ) : (
                 <>
                     <MousePointer />
                     <NavFix />
@@ -54,7 +54,7 @@ export default function App() {
                     <ToastContainer />
                     <Footer />
                 </>
-            {/* )} */}
+            )}
         </div>
     );
 }

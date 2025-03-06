@@ -11,7 +11,6 @@ const ContactForm = () => {
 
     const validateForm = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('Form submission triggered');
 
         const form = event.currentTarget;
         const subjectInput = form.subject as HTMLInputElement;
@@ -31,7 +30,6 @@ const ContactForm = () => {
     };
 
     useEffect(() => {
-        console.log('Form state:', state);
         if (state.succeeded) {
             const form = document.querySelector('form') as HTMLFormElement;
             if (form) form.reset();

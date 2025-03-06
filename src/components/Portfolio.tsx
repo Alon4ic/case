@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { portfolioItems } from '@/constans';
 import Link from 'next/link';
 import Images from './Images';
@@ -12,17 +12,9 @@ interface PortfolioProps {
 const Portfolio: React.FC<PortfolioProps> = ({ filter }) => {
     const [visibleItems, setVisibleItems] = useState(4);
 
-    useEffect(() => {
-        console.log('Current filter:', filter);
-    }, [filter]);
-
     const filteredItems = portfolioItems.filter(
         (item) => filter === 'Gallery' || item.id === filter
     );
-
-    useEffect(() => {
-        console.log('Filtered items:', filteredItems);
-    }, [filteredItems]);
 
     const loadMoreItems = () => {
         setVisibleItems((prevVisibleItems) => prevVisibleItems + 4);
