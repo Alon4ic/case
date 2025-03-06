@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 
-
 const sections = [
     { id: 'home', name: 'Home' },
     { id: 'works', name: 'Works' },
@@ -14,54 +13,64 @@ const NavFix = () => {
     const [activeSection, setActiveSection] = useState('');
     const [showNavFix, setShowNavFix] = useState(false);
     const [menuStyle, setMenuStyle] = useState({});
+
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            const top = element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+                top,
+                behavior: 'smooth',
+            });
         }
     };
 
     useEffect(() => {
         const handleScroll = () => {
-            const scrollPosition = window.scrollY + window.innerHeight / 2;
-            let newActiveSection = '';
+            try {
+                const scrollY = Math.max(0, window.scrollY);
+                const scrollPosition = scrollY + window.innerHeight / 2;
+                let newActiveSection = '';
 
-            sections.forEach((section) => {
-                const element = document.getElementById(section.id);
-                if (element) {
-                    const { offsetTop, offsetHeight } = element;
-                    if (
-                        scrollPosition >= offsetTop &&
-                        scrollPosition < offsetTop + offsetHeight
-                    ) {
-                        newActiveSection = section.id;
+                sections.forEach((section) => {
+                    const element = document.getElementById(section.id);
+                    if (element) {
+                        const { offsetTop, offsetHeight } = element;
+                        if (
+                            scrollPosition >= offsetTop &&
+                            scrollPosition < offsetTop + offsetHeight
+                        ) {
+                            newActiveSection = section.id;
+                        }
                     }
+                });
+
+                setActiveSection(newActiveSection);
+
+                const headerHeight = 60;
+                const body = document.body;
+                const bodyRect = body.getBoundingClientRect();
+                const bodyRightEdge = bodyRect.right;
+                const viewportWidth = window.innerWidth;
+                const rightOffset = viewportWidth - bodyRightEdge + 10;
+
+                setMenuStyle({
+                    right: `${rightOffset}px`,
+                });
+
+                if (scrollY > headerHeight) {
+                    setShowNavFix(true);
+                } else {
+                    setShowNavFix(false);
                 }
-            });
-
-            setActiveSection(newActiveSection);
-
-            const headerHeight = 60;
-            const body = document.body;
-            const bodyRect = body.getBoundingClientRect();
-            const bodyRightEdge = bodyRect.right;
-            const viewportWidth = window.innerWidth;
-            const rightOffset = viewportWidth - bodyRightEdge + 10; // 20px от края body
-
-            setMenuStyle({
-                right: `${rightOffset}px`,
-            });
-
-            if (window.scrollY > headerHeight) {
-                setShowNavFix(true);
-            } else {
-                setShowNavFix(false);
+            } catch (error) {
+                console.error('Scroll error on iPhone:', error);
             }
         };
 
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll); // Учет изменения ширины
-        handleScroll(); // Инициализация при загрузке
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleScroll);
@@ -78,7 +87,7 @@ const NavFix = () => {
             {sections.map((section) => (
                 <button
                     key={section.id}
-                    onClick={() => scrollToSection(`${section.id}`)}
+                    onClick={() => scrollToSection(section.id)}
                     className="cursor-style py-2 pl-2"
                 >
                     <p

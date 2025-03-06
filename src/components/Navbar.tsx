@@ -32,7 +32,7 @@ const Navbar = () => {
                 <Link
                     key={nav.name}
                     href={nav.href}
-                    className="relative link group cursor-style"
+                    className="relative link group text-white text-base font-semibold hover:text-[#BDBDBD]  cursor-style"
                 >
                     {nav.name}
                     <span className="absolute left-0 top-[26px] h-[2px] bg-reds w-full scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 ease-in-out transform -translate-y-1/2 origin-left group-[&:not(:hover)]:origin-right"></span>

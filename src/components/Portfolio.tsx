@@ -48,7 +48,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ filter }) => {
                                 </p>
                                 <Link
                                     href={item.linkImg}
-                                    className="block-link middle:w-[156px] w-[125px] flex middle:ml-0 middle:mr-auto ml-auto mr-auto justify-between items-center uppercase mt-[40px] middle:mb-0 mb-5 laptop:text-xl text-base  cursor-style group relative"
+                                    className="block-link middle:w-[135px] w-[120px] flex middle:ml-0 middle:mr-auto ml-auto mr-auto justify-between items-center uppercase mt-[40px] middle:mb-0 mb-5 laptop:text-xl text-base  cursor-style group relative hover:text-[#BDBDBD] text-white"
                                     target="_blank"
                                 >
                                     <Image
@@ -59,7 +59,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ filter }) => {
                                         height={18}
                                     />
                                     <span className="block-btn middle:text-base text-sm">
-                                        check work
+                                        check work&nbsp;
                                     </span>
                                     <span className="absolute left-0 top-[26px] h-[2px] bg-reds w-full scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 ease-in-out transform -translate-y-1/2 origin-left group-[&:not(:hover)]:origin-right"></span>
                                 </Link>
@@ -76,10 +76,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ filter }) => {
             </div>
             {visibleItems < filteredItems.length && (
                 <div className="work-show flex justify-center text-white">
-                    <Button
-                        onClick={loadMoreItems}
-                        id="show-more"
-                    >
+                    <Button onClick={loadMoreItems} id="show-more">
                         Show more
                     </Button>
                 </div>

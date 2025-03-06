@@ -189,6 +189,6 @@ export const navLinks = [
     { id: 0, name: 'Home', href: '/' },
     { id: 1, name: 'Works', href: '/#works' },
     { id: 2, name: 'Reviews', href: '/#reviews' },
-    { id: 3, name: 'Skills', href: '/#scills' },
+    { id: 3, name: 'Skills', href: '/#skills' },
     { id: 4, name: 'Contact', href: '#contacts' },
 ];

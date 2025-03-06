@@ -7,7 +7,7 @@ const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
 }) => {
     return (
         <button
-            className="relative flex flex-row items-center gap-2 px-4 py-2 bg-transparent active:bg-white15 text-white uppercase sm:text-base text-sm overflow-hidden transition-colors duration-300 group cursor-style"
+            className="relative flex flex-row items-center gap-2 px-4 py-2 bg-transparent active:bg-white15 text-white uppercase sm:text-base text-sm overflow-hidden transition-colors duration-300 group cursor-style rounded-lg"
             {...props}
         >
             <Image

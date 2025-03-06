@@ -12,7 +12,7 @@ const ContactsPage = () => {
         >
             <div className="xl:pl-[14.4%] pl-5 min-w-[50%] bg-maxDark pt-[68px] middle:pb-[85px] pb-[30px]">
                 <div className="block middle:mx-0 mx-auto">
-                    <div className="w-full flex middle:justify-start justify-center logo mb-[41px] contacts-logo">
+                    <div className="w-full flex middle:justify-start justify-center logo mb-[61px] contacts-logo">
                         <Image
                             src="/images/AR..svg"
                             alt="logo"
@@ -22,7 +22,7 @@ const ContactsPage = () => {
                     </div>
                     {contactsLinks.map((contact, index) => (
                         <div
-                            className="contacts-links w-full flex middle:justify-start justify-center pb-4"
+                            className="contacts-links w-full flex middle:justify-start justify-center pb-5"
                             key={index}
                         >
                             <a
@@ -37,7 +37,7 @@ const ContactsPage = () => {
                             </a>
                         </div>
                     ))}
-                    <div className="w-full middle:text-start text-center pt-[30px]">
+                    <div className="w-full middle:text-start text-center pt-[40px]">
                         <p className="uppercase font-medium text-base text-white">
                             follow me
                         </p>

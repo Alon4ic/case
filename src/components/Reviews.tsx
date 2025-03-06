@@ -44,7 +44,7 @@ const Reviews = () => {
     };
 
     return (
-        <div id="reviews" className="bg-maxDark">
+        <div id="reviews" className="bg-maxDark xl:pb-[100px] middle:pb-[80px] pb-[50px]">
             <div className="box-top flex flex-col items-center lg:pt-[70px] middle:pt-[57px] pt-[30px]">
                 <h2 className="text-white middle:text-[50px] sm:text-[40px] text-[30px] font-semibold middle:leading-[90px] sm:leading-[60px] leading-[48px] uppercase">
                     Reviews<span className="text-reds">.</span>

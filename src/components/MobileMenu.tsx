@@ -32,7 +32,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Фон затемнения */}
             <div className="fixed inset-0 bg-black/80" onClick={onClose}></div>
             <div
-                className={`fixed top-0 left-0 w-[100vw] bg-[url('/images/background.jpg')] shadow-lg transform transition-transform duration-300 ${
+                className={`fixed top-0 left-0 w-[100vw] bg-[url('/images/bg-burger.jpg')] bg-repeat shadow-lg transform transition-transform duration-300 ${
                     isOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
                 onClick={(e) => e.stopPropagation()}
@@ -52,7 +52,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     </Link>
                     <button
                         onClick={onClose}
-                        className="text-black bg-transparent hover:bg-[#454441] text-sm p-2"
+                        className="rounded-[10px] bg-transparent hover:bg-white20 active:bg-white15 text-sm p-2"
                     >
                         <Image
                             src="/icons/close.svg"
@@ -66,13 +66,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <div className="flex md:max-w-[359px] w-[100%] flex-col justify-center md:items-start items-center md:pl-[40px] pl-0">
                         {navLinks.map((item) => (
                             <Link
+                                onClick={onClose}
                                 href={item.href}
                                 key={item.id}
-                                className="group phone:text-[26px] text-[20px] text-white hover:text-[#BDBDBD] leading-[58px] font-medium relative pb-2 mb-2" // Добавлен класс group
-                                onClick={onClose}
+                                className="relative text-white hover:text-[#BDBDBD] text-base  group font-normal whitespace-nowrap py-2 rounded overflow-hidden"
                             >
                                 {item.name}
-                                <span className="absolute left-0 top-[46px] h-[2px] bg-reds w-full scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 ease-in-out transform -translate-y-1/2 origin-left group-[&:not(:hover)]:origin-right"></span>
+                                <span className="absolute left-0 top-[30px] h-[2px] bg-reds w-full scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 ease-in-out transform -translate-y-1/2 origin-left group-[&:not(:hover)]:origin-right"></span>
                             </Link>
                         ))}
                     </div>

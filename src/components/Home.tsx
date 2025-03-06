@@ -85,7 +85,7 @@ const HomePage: React.FC = () => {
     return (
         <div id="home" className="home w-[100%]">
             <Header />
-            <div className="home-left middle:w-[66%] w-[100%] middle:h-[800px] h-[550px] bg-[url('/images/background.jpg')] bg-cover">
+            <div className="home-left middle:w-[66%] w-[100%] middle:h-[800px] h-[550px] bg-[url('/images/background.jpg')] bg-repeat">
                 <div className="flex flex-col middle:pt-[219px] pt-[180px] middle:ml-[14%] ml-0 middle:px-0 px-5 xl:w-[500px] lg:w-[400px] middle:w-[350px] w-full middle:text-start text-center">
                     <h1
                         className="home-title text-white tracking-tighter font-semibold uppercase mb-[26px] xl:text-[70px] lg:text-[56px] sm:text-[48px] text-[36px] xl:leading-[90px] lg:leading-[68px] sm:leading-[57px] leading-[44px]"
@@ -98,7 +98,7 @@ const HomePage: React.FC = () => {
                     </p>
                     <a
                         href="#contacts"
-                        className="flex justify-between items-center bg-black hover:bg-white20 active:bg-white15 w-[153px] h-[36px] pr-4 pl-1 rounded-lg cursor-style home-link middle:mx-0 mx-auto"
+                        className="flex justify-between items-center bg-black hover:bg-white20 active:bg-white15 w-[143px] h-[36px] pr-4 pl-1 rounded-lg cursor-style home-link middle:mx-0 mx-auto"
                     >
                         <Image
                             src="/images/arrow-right.svg"
