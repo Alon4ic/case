@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 
 const sections = [
@@ -12,92 +13,54 @@ const NavFix = () => {
     const [activeSection, setActiveSection] = useState('');
     const [showNavFix, setShowNavFix] = useState(false);
     const [menuStyle, setMenuStyle] = useState({});
-
     const scrollToSection = (id: string) => {
-        try {
-            const element = document.getElementById(id);
-            if (!element) return;
-
-            // Проверяем поддержку smooth scroll
-            const isSmoothScrollSupported =
-                'scrollBehavior' in document.documentElement.style;
-
-            if (isSmoothScrollSupported) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                // Полифилл для iOS
-                const start = window.pageYOffset;
-                const target = element.getBoundingClientRect().top + start;
-                const duration = 500;
-                const startTime = performance.now();
-
-                const animateScroll = (time: number) => {
-                    const elapsed = time - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-
-                    window.scrollTo(0, start + target * progress);
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animateScroll);
-                    }
-                };
-
-                requestAnimationFrame(animateScroll);
-            }
-        } catch (error) {
-            console.error('Scroll error:', error);
-            // Fallback для старых браузеров
-            const element = document.getElementById(id);
-            element?.scrollIntoView();
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
     useEffect(() => {
         const handleScroll = () => {
-            try {
-                const scrollY = Math.max(0, window.scrollY);
-                const scrollPosition = scrollY + window.innerHeight / 2;
-                let newActiveSection = '';
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            let newActiveSection = '';
 
-                sections.forEach((section) => {
-                    const element = document.getElementById(section.id);
-                    if (element) {
-                        const { offsetTop, offsetHeight } = element;
-                        if (
-                            scrollPosition >= offsetTop &&
-                            scrollPosition < offsetTop + offsetHeight
-                        ) {
-                            newActiveSection = section.id;
-                        }
+            sections.forEach((section) => {
+                const element = document.getElementById(section.id);
+                if (element) {
+                    const { offsetTop, offsetHeight } = element;
+                    if (
+                        scrollPosition >= offsetTop &&
+                        scrollPosition < offsetTop + offsetHeight
+                    ) {
+                        newActiveSection = section.id;
                     }
-                });
-
-                setActiveSection(newActiveSection);
-
-                const headerHeight = 60;
-                const body = document.body;
-                const bodyRect = body.getBoundingClientRect();
-                const bodyRightEdge = bodyRect.right;
-                const viewportWidth = window.innerWidth;
-                const rightOffset = viewportWidth - bodyRightEdge + 10;
-
-                setMenuStyle({
-                    right: `${rightOffset}px`,
-                });
-
-                if (scrollY > headerHeight) {
-                    setShowNavFix(true);
-                } else {
-                    setShowNavFix(false);
                 }
-            } catch (error) {
-                console.error('Scroll error on iPhone:', error);
+            });
+
+            setActiveSection(newActiveSection);
+
+            const headerHeight = 60;
+            const body = document.body;
+            const bodyRect = body.getBoundingClientRect();
+            const bodyRightEdge = bodyRect.right;
+            const viewportWidth = window.innerWidth;
+            const rightOffset = viewportWidth - bodyRightEdge + 10; // 20px от края body
+
+            setMenuStyle({
+                right: `${rightOffset}px`,
+            });
+
+            if (window.scrollY > headerHeight) {
+                setShowNavFix(true);
+            } else {
+                setShowNavFix(false);
             }
         };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('resize', handleScroll, { passive: true });
-
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll); // Учет изменения ширины
+        handleScroll(); // Инициализация при загрузке
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleScroll);
@@ -114,7 +77,7 @@ const NavFix = () => {
             {sections.map((section) => (
                 <button
                     key={section.id}
-                    onClick={() => scrollToSection(section.id)}
+                    onClick={() => scrollToSection(`${section.id}`)}
                     className="cursor-style py-2 pl-2"
                 >
                     <p
