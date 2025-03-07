@@ -129,7 +129,7 @@ export const portfolioItems: PortfolioItem[] = [
     },
     {
         id: 'Single',
-        linkImg: 'https://delicate-buttercream-401cc4.netlify.app/',
+        linkImg: 'https://alon4ic.github.io/',
         imgSrc: '/images/scrin3.jpeg',
         title: 'Auto Express Car service',
         description: `Landing page is built using HTML, the foundation of all web development. I've used HTML to structure our content, making it easier to read and navigate. HTML also allowed me to create links to external resources such as social media profiles and contact details. My landing page design is made possible by the power of CSS. I used CSS to style the content, creating a visually appealing and cohesive design. From the layout of the text and images to the designer's choice of colours and fonts, CSS allowed me to bring this vision to life.`,
@@ -146,25 +146,6 @@ export const portfolioItems: PortfolioItem[] = [
         link: 'https://www.instagram.com/redkoalena3522/',
         iconSrc: '/images/arrow-right.svg',
     },
-    {
-        id: 'Group',
-        title: 'Unigrade Landing page',
-        linkImg: 'https://delicate-buttercream-401cc4.netlify.app/',
-        imgSrc: '/images/scrin5.jpeg',
-        description: `This landing page is built using HTML, the foundation of all web development. I've used HTML to structure our content, making it easier to read and navigate. HTML also allowed me to create links to external resources such as social media profiles and contact details. My landing page design is made possible by the power of CSS. I used CSS to style the content, creating a visually appealing and cohesive design. From the layout of the text and images to the designer's choice of colors and fonts, CSS allowed me to bring this vision to life.`,
-        link: 'https://www.instagram.com/redkoalena3522/',
-        iconSrc: '/images/arrow-right.svg',
-    },
-    {
-        id: 'Group',
-        title: 'Unigrade Landing page',
-        linkImg: 'https://delicate-buttercream-401cc4.netlify.app/',
-        imgSrc: '/images/scrin6.jpeg',
-        description: `This landing page is built using HTML, the foundation of all web development. I've used HTML to structure our content, making it easier to read and navigate. HTML also allowed me to create links to external resources such as social media profiles and contact details. My landing page design is made possible by the power of CSS. I used CSS to style the content, creating a visually appealing and cohesive design. From the layout of the text and images to the designer's choice of colors and fonts, CSS allowed me to bring this vision to life.`,
-        link: 'https://www.instagram.com/redkoalena3522/',
-        iconSrc: '/images/arrow-right.svg',
-    },
-    // Add more items as needed
 ];
 
 export const socialLinks = [
