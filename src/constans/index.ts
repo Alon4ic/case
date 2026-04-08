@@ -99,6 +99,16 @@ export const skillsIcons = [
 export const portfolioItems: PortfolioItem[] = [
   {
     id: "Single",
+    linkImg: "https://react-ui-component-library-gilt.vercel.app/",
+    imgSrc: "/images/library.png",
+    title: "React Component Library",
+    description:
+      "I continuously improve my skills to grow as a strong full-stack developer. As part of this process, I built a React component library designed to simplify and speed up UI development. The library provides reusable UI elements that can be easily copied and integrated into any project.Users can interact directly with components inside the library, customize text content, and obtain ready-to-use code. Each component supports flexible styling options, allowing developers to either apply built-in styles or integrate them into their own styling system.While working on this project, I significantly improved my understanding of React performance optimization and gained deeper experience with hooks and component architecture.",
+    link: "https://react-ui-component-library-gilt.vercel.app/",
+    iconSrc: "/images/arrow-right.svg",
+  },
+  {
+    id: "Single",
     linkImg: "https://www.area51dxb.com/",
     imgSrc: "/images/scrin0.png",
     title: "Area51 Website",
